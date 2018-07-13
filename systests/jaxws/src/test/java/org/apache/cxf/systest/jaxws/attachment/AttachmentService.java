@@ -23,14 +23,15 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.ws.soap.MTOM;
 
-import org.apache.cxf.annotations.SchemaValidation;
-
-@WebService(name = "AttachmentService", targetNamespace = "http://org.apache.cxf/service/AttachmentService")
-@SchemaValidation(type = SchemaValidation.SchemaValidationType.IN)
+@WebService(name = "AttachmentService", targetNamespace = AttachmentService.NS)
+@MTOM
 public interface AttachmentService {
 
+    String NS = "http://org.apache.cxf/service/AttachmentService";
+
     @WebMethod
-    int test(@WebParam(name = "request") @XmlElement(required = true) Request request) throws Exception;
+    Integer testMethod(@WebParam @XmlElement(required = true) Request request) throws Exception;
 
 }
